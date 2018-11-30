@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <ProductList
+    <add-product
+      @addProduct="addProduct"
+    />
+    <product-list
       :products="products"
-      header="Products List"
       @remove="remove"
     />
   </div>
@@ -10,12 +12,14 @@
 
 <script>
 import ProductList from './components/ProductList.vue'
+import AddProduct from './components/AddProduct.vue'
 import axios from 'axios'
 
 export default {
   name: 'app',
   components: {
-    ProductList
+    'product-list': ProductList,
+    'add-product': AddProduct
   },
   data() {
     return {
@@ -32,6 +36,9 @@ export default {
     },
     remove: function (index) {
       this.products.splice(index, 1);            
+    },
+    addProduct: function(product) {
+      this.products.push(product);
     }
   }
 }
