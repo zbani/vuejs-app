@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import ProductListItem from './ProductListItem.vue'
 
 export default {
@@ -30,14 +29,6 @@ export default {
   components: {
       'product-item': ProductListItem
   },
-  props: ['products', 'header'],
-  methods: {
-      remove: function(index) {
-        this.$emit('remove', index);
-      },
-      formatDate: function(productDate) {
-          return moment(new Date(productDate)).format('DD/MM/YYYY')
-      }
-  }
+  props: ['products'],
 }
 </script>
