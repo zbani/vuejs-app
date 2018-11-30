@@ -13,27 +13,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for='(product, index) in products'
-                    :key="product.productId">
-                    <td>
-                    <button class="btn btn-xs btn-danger" 
-                        @click="remove(index)">Remove</button>
-                    </td>
-                    <td>{{product.productName}}</td>
-                    <td>{{product.productCode}}</td>
-                    <td>{{formatDate(product.releaseDate)}}</td>
-                    <td>{{product.price}}</td>
-                </tr>
+                <product-item v-for='product in products'
+                    :key="product.productId"
+                    :product="product" />
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment';
+import ProductListItem from './ProductListItem.vue'
 
 export default {
   name: 'ProductList',
+  components: {
+      'product-item': ProductListItem
+  },
   props: ['products', 'header'],
   methods: {
       remove: function(index) {

@@ -11,9 +11,10 @@
 </template>
 
 <script>
-import ProductList from './components/ProductList.vue'
-import AddProduct from './components/AddProduct.vue'
-import axios from 'axios'
+import axios from 'axios';
+import _ from 'lodash';
+import ProductList from './components/ProductList.vue';
+import AddProduct from './components/AddProduct.vue';
 
 export default {
   name: 'app',
@@ -34,8 +35,8 @@ export default {
       axios.get('./api/products.json')
         .then(res => this.products = res.data)
     },
-    remove: function (index) {
-      this.products.splice(index, 1);            
+    remove: function (product) {
+      this.products = _.without(this.products, product);          
     },
     addProduct: function(product) {
       this.products.push(product);
