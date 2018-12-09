@@ -4,7 +4,7 @@
         <button class="btn btn-xs btn-danger" 
             @click="requestRemove">Remove</button>
         </td>
-        <td>{{product.productName}}</td>
+        <td><router-link :to="`/products/${product.productId}`">{{product.productName}}</router-link></td>
         <td>{{product.productCode}}</td>
         <td>{{this.formattedDate}}</td>
         <td>{{product.price}}</td>

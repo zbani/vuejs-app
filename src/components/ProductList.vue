@@ -1,5 +1,5 @@
 <template>
-    <div class="card mt-5"> 
+    <div class="card"> 
         <h2 class="card-header">Product List</h2>
         <table class='table'
                 v-if='products && products.length'>

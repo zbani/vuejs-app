@@ -1,18 +1,17 @@
 <template>
-  <div class="panel panel-primary">
+  <div class="card my-5">
 
-    <div class="panel-heading addheading"
+    <div class="card-header bg-primary addheading"
       @click="hidepanel =! hidepanel">
-      <span class="glyphicon glyphicon-plus"></span> Add Product
+      <i class="fas fa-plus"></i> Add Product
     </div>
 
-    <div class="panel-body"
+    <div class="card-body"
       :class="{ hide: hidepanel }">
 
-      <form class="form-horizontal"
-        @submit.prevent="requestAdd">
+      <form @submit.prevent="requestAdd">
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-4 control-label" htmlFor="name">Product Name</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="name" placeholder="Product's Name"
@@ -20,7 +19,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-4 control-label" htmlFor="code">Product Code</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="code" placeholder="Product's Code"
@@ -28,7 +27,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-4 control-label" htmlFor="releaseDate">Release Date</label>
           <div class="col-sm-8">
             <input type="date" class="form-control" id="releaseDate"
@@ -36,7 +35,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-4 control-label" htmlFor="code">Price</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="price" placeholder="Price"
@@ -44,7 +43,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary pull-right">Save</button>
           </div>
@@ -71,6 +70,7 @@ export default {
           this.$emit('addProduct', this.formData);
           this.formData = [];
           this.hidepanel = true;
+          this.$router.push('/products');
       }
   }
 
@@ -79,8 +79,12 @@ export default {
 
 <style scoped>
 
-  .panel-heading {
+  .addheading {
     cursor: pointer;
+    color: #fff;
+  }
+  .hide {
+    display: none;
   }
 
 </style>

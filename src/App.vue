@@ -3,23 +3,21 @@
     <add-product
       @addProduct="addProduct"
     />
-    <product-list
+    <router-view
       :products="products"
       @remove="remove"
-    />
+    ></router-view>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import _ from 'lodash';
-import ProductList from './components/ProductList.vue';
 import AddProduct from './components/AddProduct.vue';
 
 export default {
   name: 'app',
   components: {
-    'product-list': ProductList,
     'add-product': AddProduct
   },
   data() {
