@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-import _ from 'lodash';
 import AddProduct from './components/AddProduct.vue';
 
 export default {
@@ -20,24 +18,20 @@ export default {
   components: {
     'add-product': AddProduct
   },
-  data() {
-    return {
-      products: []
-    }
-  },
   created: function () {
-    this.fetchProducts();
+    this.$store.dispatch('fetchProducts');
   },
   methods: {
-    fetchProducts: function() {
-      axios.get('./api/products.json')
-        .then(res => this.products = res.data)
-    },
     remove: function (product) {
-      this.products = _.without(this.products, product);          
+      this.$store.commit('deleteProduct', product)    
     },
     addProduct: function(product) {
-      this.products.push(product);
+      this.$store.commit('addProduct', product)
+    }
+  },
+  computed: {
+    products: function() {
+      return this.$store.getters.products;
     }
   }
 }

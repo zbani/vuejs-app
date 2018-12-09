@@ -67,6 +67,7 @@ export default {
   },
   methods: {
       requestAdd: function() {
+          this.formData['productId'] = Math.floor(Math.random() * 100);
           this.$emit('addProduct', this.formData);
           this.formData = [];
           this.hidepanel = true;

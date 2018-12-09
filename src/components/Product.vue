@@ -46,20 +46,15 @@
 </template>
 
 <script>
-import axios from 'axios';
 import _ from 'lodash';
 
 export default {
     name: 'product',
-    data() {
-        return {
-            product: {},
-        };
-    },
-    created() {
-        let productId = this.$route.params.id;
-        axios.get('./api/products.json')
-            .then(res => this.product = _.find(res.data, function(p) { return p.productId == productId; }));
+    computed: {
+        product: function() {
+            let productId = this.$route.params.id;
+            return _.find(this.$store.getters.products, function(p) { return p.productId == productId; })
+        }
     }
 }
 </script>
