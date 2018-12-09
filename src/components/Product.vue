@@ -47,6 +47,7 @@
 
 <script>
 import axios from 'axios';
+import _ from 'lodash';
 
 export default {
     name: 'product',
@@ -56,9 +57,9 @@ export default {
         };
     },
     created() {
-        let id = this.$route.params.id;
+        let productId = this.$route.params.id;
         axios.get('./api/products.json')
-            .then(res => this.product = res.data.find(p => p.productId == id));
+            .then(res => this.product = _.find(res.data, function(p) { return p.productId == productId; }));
     }
 }
 </script>
